@@ -35,8 +35,7 @@ router.get("/", (req, res) => {
     if (req.oidc.isAuthenticated()) {
         res.redirect("/todos")
     } else {
-        res.redirect("/login")
-        // res.send(req.oidc.isAuthenticated() ? "Logged in" : "Logged out")
+        res.render("index")
     }
 })
 router.get("/todos", requiresAuth(), async (req, res) => {
@@ -93,7 +92,7 @@ router.post("/todos/update", async (req, res) => {
         }
     })
 })
-router.post("/todos/delete", async (req, res) => {
+router.post("/todos/delete", requiresAuth(), async (req, res) => {
     let user = req.oidc.user.sub
     const todoid = parseInt(req.body.todoid)
     const q = `DELETE FROM todos WHERE ? AND ?`
@@ -112,18 +111,5 @@ router.post("/todos/delete", async (req, res) => {
         }
     })
 })
-router.get("/api/todos", async (req, res) => {
-    let user = await req.oidc.user.sub
-    let q = `SELECT todoid,todotitle,todo FROM todos WHERE ?`
-    let userq = [
-        {
-            userid: user,
-        },
-    ]
-    // let q = `SELECT * FROM todos`
-    const query = await db.query(q, userq, (err, result) => {
-        console.log(result)
-        res.send(result)
-    })
-})
+
 module.exports = router

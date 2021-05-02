@@ -9,10 +9,18 @@
         integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    <title>todo</title>
+    <title>todos</title>
     <style>
-        body {
-            height: 1500px;
+        .dark-mode {
+            filter: invert(1) hue-rotate(180deg);
+        }
+
+        .invert {
+            filter: invert(1) hue-rotate(180deg);
+        }
+
+        #cards {
+            margin-bottom: 7rem;
         }
     </style>
 </head>
@@ -20,14 +28,20 @@
 <body>
     {{>navbar logout=true}}
     <div class="container my-5">
-        <div class="text-center fixed-bottom my-5">
+        <div class="text-center fixed-bottom my-5 inverted" style="margin-top: 0% !important;">
             <button type="button" class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#newtodo">New <i
                     class="fas fa-plus"></i></button>
         </div>
-        <div class="row">
+        <div class="row" id="cards">
             {{#each result}}
             {{>cards todotitle=this.todotitle todo=this.todo todoid=this.todoid}}
             {{/each}}
+            {{#unless result}}
+            <div class="container text-center">
+                <h2>Todo list is empty you can create new todo!</h2>
+            </div>
+            {{>dummyCard}}
+            {{/unless}}
         </div>
     </div>
     {{>edit}}
@@ -35,27 +49,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
         crossorigin="anonymous"></script>
-    <script>
-        var exampleModal = document.getElementById('exampleModal')
-        exampleModal.addEventListener('show.bs.modal', function (event) {
-            // Button that triggered the modal
-            var button = event.relatedTarget
-            // Extract info from data-bs-* attributes
-            var todotitle = button.getAttribute('data-bs-todotitle')
-            const todo = button.getAttribute('data-bs-todo')
-            const todoid = button.getAttribute('data-bs-todoid')
-            // If necessary, you could initiate an AJAX request here
-            // and then do the updating in a callback.
-            //
-            // Update the modal's content.
-            const todoidselector = exampleModal.querySelector('#todoid')
-            var todoTitleselector = exampleModal.querySelector('#todotitle')
-            const todoselector = exampleModal.querySelector('.modal-body textarea')
-            todoTitleselector.value = todotitle
-            todoselector.value = todo
-            todoidselector.value = todoid
-        })
-    </script>
+    <script src="js/todo.js"></script>
 </body>
 
 </html>

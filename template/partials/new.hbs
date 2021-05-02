@@ -9,15 +9,16 @@
                 <form method="POST" action="/todos">
                     <div class="mb-3">
                         <label for="todotitle" class="col-form-label">Title: </label>
-                        <input type="text" class="form-control" id="todotitle" name="todotitle" autocomplete="off">
+                        <input type="text" class="form-control" id="todotitle" name="todotitle" autocomplete="off"
+                            required>
                     </div>
                     <div class="mb-3">
                         <label for="todo" class="col-form-label">Todo: </label>
                         <textarea class="form-control" id="todo" name="todo" autocomplete="off"></textarea>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-success">save</button>
+                        <button type="button" class="btn btn-secondary inverted" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success inverted">save</button>
                     </div>
                 </form>
             </div>
