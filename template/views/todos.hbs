@@ -35,13 +35,12 @@
         </div>
         <div class="row" id="cards">
             {{#each result}}
-            {{>cards todotitle=this.todotitle todo=this.todo todoid=this.todoid}}
+            {{>cards todotitle=this.todotitle todo=this.todo todoid=this.todoid public=this.public}}
             {{/each}}
             {{#unless result}}
             <div class="container text-center">
-                <h2>Todo list is empty you can create new todo!</h2>
+                <h2>Your post are empty create one</h2>
             </div>
-            {{>dummyCard}}
             {{/unless}}
         </div>
     </div>

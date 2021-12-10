@@ -4,15 +4,16 @@
             <h5 class="card-title">{{this.todotitle}}</h5>
             <p class="card-text">{{this.todo}}</p>
             <a href="#" class="btn btn-info btn-sm inverted" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                data-bs-todotitle="{{this.todotitle}}" data-bs-todo="{{this.todo}}"
+                data-bs-todotitle="{{this.todotitle}}" data-bs-todo="{{this.todo}}" data-bs-public ="{{this.public}}" 
                 data-bs-todoid="{{this.todoid}}">edit <i class="fas fa-pen-square"></i></a>
-
+            
             <form method="post" action="/todos/delete" style="display:inline;">
                 <input type="hidden" name="todoid" value="{{this.todoid}}" />
                 <a onclick="this.parentNode.submit();" class="btn btn-danger btn-sm inverted">delete <i
                         class="fas fa-trash"></i></a>
                 </a>
             </form>
+            public : {{this.public}}
         </div>
     </div>
 </div>

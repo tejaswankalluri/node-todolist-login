@@ -2,7 +2,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="newtodoLabel">New Todo</h5>
+                <h5 class="modal-title" id="newtodoLabel">New Blog</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -13,8 +13,14 @@
                             required>
                     </div>
                     <div class="mb-3">
-                        <label for="todo" class="col-form-label">Todo: </label>
+                        <label for="todo" class="col-form-label">Description: </label>
                         <textarea class="form-control" id="todo" name="todo" autocomplete="off"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="public">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            Make public
+                        </label>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary inverted" data-bs-dismiss="modal">Close</button>
