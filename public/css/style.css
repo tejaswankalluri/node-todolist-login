@@ -376,6 +376,7 @@ img {
   max-height: -moz-max-content;
   max-height: max-content;
   padding: 2rem;
+  color: black;
   background-color: #cfeaff;
   border-radius: 0.3rem;
   -webkit-transition: 0.2s ease;
